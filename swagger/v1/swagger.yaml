@@ -1,0 +1,84 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/libraries/{id}/books":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: library books
+      tags:
+      - libraries
+      security:
+      - user_id: []
+      parameters:
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        title: 
+                          type: string
+                        checked_out_by:
+                          type: string
+                        available:
+                          type: boolean
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      per_page: 
+                        type: integer
+                      total_pages:
+                        type: integer
+                      total:
+                        type: integer
+        '403':
+          description: This page dosen't exist.
+  servers:
+  - url: "{defaultHost}"
+    variables:
+      default: http://localhost:3001
+components:
+ securitySchemes:
+  user_id:
+    type: apikey
+    name: x-user-id
+    in: header

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Tali
+  available: true
+  checked_out_by: 
+  library: one_lib
+
+two:
+  title: Asud
+  available: false
+  checked_out_by: "sanket veer"
+  library: one_lib

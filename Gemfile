@@ -13,7 +13,11 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+gem "jbuilder"
+
+gem 'httparty', '0.20.0'
+gem 'pagy', '5.10.1'
+gem 'rswag', '2.5.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -34,15 +38,24 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem "rack-cors"
+gem "rack-cors"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'pry-byebug', '3.10.1'
+  gem 'rubocop', '1.22.3', require: false
+  gem 'rspec-rails', '~> 5.0'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
-group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+group :test do
+  gem 'pry'
+  gem 'byebug'
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not mandatory, but highly recommended
+  gem 'database_cleaner'
+  # gem 'rswag-specs', '2.5.1'
+  # gem 'simplecov', require: false
+  # gem 'simplecov-badge', require: false
+  # gem 'simplecov-json', require: false
 end
-
